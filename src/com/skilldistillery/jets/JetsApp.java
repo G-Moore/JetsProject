@@ -77,7 +77,7 @@ public class JetsApp {
 				longest();
 			}
 			if (opt == 5) {
-
+				
 			}
 			if (opt == 6) {
 
@@ -102,7 +102,7 @@ public class JetsApp {
 			System.out.println(jet + "can fly for: " + ft + " hours.");
 		}
 	}
-	
+
 	public Jets fastest() {
 		Jets fjet = jets.get(0);
 		for (Jets jet : jets) {
@@ -114,7 +114,7 @@ public class JetsApp {
 		System.out.println(fjet.toString());
 		return fjet;
 	}
-	
+
 	public Jets longest() {
 		Jets rjet = jets.get(0);
 		for (Jets jet : jets) {
@@ -126,6 +126,28 @@ public class JetsApp {
 		System.out.println(rjet.toString());
 		return rjet;
 	}
+
+	public Jets addJet(String model, double speed, int range, long price) {
+		List<Jets> jets = new ArrayList<>();
+		
+		System.out.println("model");
+		model = sc.next();
+//		jets.add(range);
+		
+		System.out.println("speed");
+		speed = sc.nextDouble();
+		System.out.println("range");
+		range = sc.nextInt();
+		System.out.println("price");
+		price = sc.nextLong();
+		
+		return addJet(model, speed, range, price);
+
+	
+	};
+	
+
+	
 
 	private void launch() {
 

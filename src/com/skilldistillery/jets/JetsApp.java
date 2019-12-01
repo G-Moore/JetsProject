@@ -37,8 +37,14 @@ public class JetsApp {
 				};
 
 				jets.add(jet);
-				System.out.println("Craft is a " + fields[0] + "that goes mach: " + fields[1]);
 			}
+
+			for (Jets jet : jets) {
+
+				System.out.println("Craft is a " + jet.getSpeed() + "that goes mach: " + jet.getSpeed());
+				
+			}
+
 			br.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -72,14 +78,16 @@ public class JetsApp {
 			}
 			if (opt == 3) {
 				for (Jets jet : jets) {
-					System.out.println(jet.getSpeed());
-					for (int i = 0; i < 4; i++) {
-						double hiRate = jet.getSpeed();
-						if (hiRate < jet.getSpeed()) {
+					double hiRate = jet.getSpeed();
+//					System.out.println(jet.getSpeed());
+//					for (int i = 0; i < 1; i++) {
+						if (hiRate <= jet.getSpeed()) {
 							hiRate = jet.getSpeed();
-//								System.out.println(jet.getSpeed());
 						}
-					}
+						System.out.println(hiRate);
+						
+//					}
+
 				}
 
 			}
@@ -106,36 +114,10 @@ public class JetsApp {
 			}
 
 		}
-//		sc.close();
 	}
 
 	private void launch() {
 
 	}
 
-//	List<Jets> parseFile(String fileName) {
-//		List<Jets> jets = new ArrayList<>();
-//		try {
-//			BufferedReader br = new BufferedReader(new FileReader(fileName));
-//			String line = br.readLine();
-//
-//			while ((line = br.readLine()) != null) {
-//
-//				String[] fields = line.split(", ");
-//				Jets jet = new Jets(fields[0], Double.parseDouble(fields[1]), Integer.parseInt(fields[2]),
-//						Long.parseLong(fields[3])) {
-//				};
-//
-//				jets.add(jet);
-//				System.out.println("Craft is a " + fields[0] + "that goes mach: " + fields[1]);
-//			}
-//			br.close();
-//			sc.close();
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		return jets;
-//	}
 }

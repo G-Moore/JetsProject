@@ -15,7 +15,6 @@ public class JetsApp {
 		
 	}
 	public static void main(String[] args) {
-//		JetsApp ja = new JetsApp();
 		JetsApp ja = new JetsApp();
 		Scanner sc = new Scanner(System.in);
 		ja.launch();
@@ -23,14 +22,19 @@ public class JetsApp {
 		
 		
 		List<Jets> jets = ja.parseFile("jets.txt");
-		for (Jets jet : jets) {
-			System.out.println(jet);
+//		for (Jets jet : jets) {
+		for (int i = 0; i < 1; i++) {
+			System.out.println(jets.get(0));
+			
+		
 		}
 
+		sc.close();
 	}
 	private void displayUserMenu() {
 		
 	}
+	
 	private void launch() {
 		
 	}
@@ -41,7 +45,7 @@ public class JetsApp {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(fileName));
 			String line = br.readLine(); // Read and discard header line
-			// id, name color breed age gender comments
+			// model speed range price
 			while ((line = br.readLine()) != null) {
 				// Split each line into fields,
 				// use the fields to construct a Pet object and add it to the list
@@ -53,6 +57,7 @@ public class JetsApp {
 				};
 //        
 				jets.add(jet);
+				System.out.println("Craft is a " + fields[0] + "that goes mach: " + fields[1]);
 
 			}
 			br.close();

@@ -39,12 +39,6 @@ public class JetsApp {
 				jets.add(jet);
 			}
 
-//			for (Jets jet : jets) {
-//				System.out.println("Craft is a " + fields[0] + "that goes mach: " + jet.getSpeed());
-
-				
-//			}
-
 			br.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -74,35 +68,13 @@ public class JetsApp {
 				}
 			}
 			if (opt == 2) {
-				for (Jets jet : jets) {
-					int ft = (int) (jet.getRange() / (jet.getSpeed() * 714));
-					System.out.println(jet + "can fly for: " + ft + " hours.");
-				}
-
+				airTime();
 			}
 			if (opt == 3) {
-				for (Jets jet : jets) {
-					double hiRate = jet.getSpeed();
-					for (int i = 0; i < 1; i++) {
-						if (0 <= jet.getSpeed()) {
-							hiRate = jet.getSpeed();
-//							System.out.println(jet.getSpeed());
-							if (hiRate <= jet.getSpeed()) {
-								System.out.println(hiRate);
-							}
-						}
-						
-					}
-					if(hiRate < jet.getSpeed())
-						
-						System.out.println(hiRate);
-				}
-
+				fastest();
 			}
 			if (opt == 4) {
-				for (Jets jet : jets) {
-					System.out.println(jet.getRange());
-				}
+				longest();
 			}
 			if (opt == 5) {
 
@@ -122,6 +94,37 @@ public class JetsApp {
 			}
 
 		}
+	}
+
+	public void airTime() {
+		for (Jets jet : jets) {
+			int ft = (int) (jet.getRange() / (jet.getSpeed() * 714));
+			System.out.println(jet + "can fly for: " + ft + " hours.");
+		}
+	}
+	
+	public Jets fastest() {
+		Jets fjet = jets.get(0);
+		for (Jets jet : jets) {
+			if (jet.getSpeed() > fjet.getSpeed()) {
+				fjet = jet;
+			}
+		}
+		System.out.println("The fastest jet has a top speed of Mach: " + fjet.getSpeed());
+		System.out.println(fjet.toString());
+		return fjet;
+	}
+	
+	public Jets longest() {
+		Jets rjet = jets.get(0);
+		for (Jets jet : jets) {
+			if (jet.getRange() > rjet.getRange()) {
+				rjet = jet;
+			}
+		}
+		System.out.println("The longest ranged jet can travel a distance of: " + rjet.getRange() + " miles.");
+		System.out.println(rjet.toString());
+		return rjet;
 	}
 
 	private void launch() {

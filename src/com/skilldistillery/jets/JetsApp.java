@@ -39,11 +39,11 @@ public class JetsApp {
 				jets.add(jet);
 			}
 
-			for (Jets jet : jets) {
+//			for (Jets jet : jets) {
+//				System.out.println("Craft is a " + fields[0] + "that goes mach: " + jet.getSpeed());
 
-				System.out.println("Craft is a " + jet.getSpeed() + "that goes mach: " + jet.getSpeed());
 				
-			}
+//			}
 
 			br.close();
 		} catch (FileNotFoundException e) {
@@ -74,20 +74,28 @@ public class JetsApp {
 				}
 			}
 			if (opt == 2) {
+				for (Jets jet : jets) {
+					int ft = (int) (jet.getRange() / (jet.getSpeed() * 714));
+					System.out.println(jet + "can fly for: " + ft + " hours.");
+				}
 
 			}
 			if (opt == 3) {
 				for (Jets jet : jets) {
 					double hiRate = jet.getSpeed();
-//					System.out.println(jet.getSpeed());
-//					for (int i = 0; i < 1; i++) {
-						if (hiRate <= jet.getSpeed()) {
+					for (int i = 0; i < 1; i++) {
+						if (0 <= jet.getSpeed()) {
 							hiRate = jet.getSpeed();
+//							System.out.println(jet.getSpeed());
+							if (hiRate <= jet.getSpeed()) {
+								System.out.println(hiRate);
+							}
 						}
-						System.out.println(hiRate);
 						
-//					}
-
+					}
+					if(hiRate < jet.getSpeed())
+						
+						System.out.println(hiRate);
 				}
 
 			}

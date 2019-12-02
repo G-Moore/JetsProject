@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,7 +13,7 @@ public class JetsApp {
 
 	Scanner sc = new Scanner(System.in);
 	List<Jets> jets = parseFile("jets.txt");
-	
+
 	public JetsApp() {
 
 	}
@@ -23,7 +24,7 @@ public class JetsApp {
 		ja.launch();
 	}
 
-	List<Jets> parseFile(String fileName) {
+public List<Jets> parseFile(String fileName) {
 		List<Jets> jets = new ArrayList<>();
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(fileName));
@@ -57,7 +58,7 @@ public class JetsApp {
 			System.out.println("4 : View jet with longest range");
 //			System.out.println("5 : Load all Cargo Jets ");
 //			System.out.println("6 : Dogfight! ");
-//			System.out.println("7 : Add a jet to Fleet ");
+			System.out.println("7 : Add a jet to Fleet ");
 //			System.out.println("8 : Remove a jet from Fleet ");
 			System.out.println("9 : Quit ");
 
@@ -78,13 +79,12 @@ public class JetsApp {
 				longest();
 			}
 			if (opt == 5) {
-				
 			}
 			if (opt == 6) {
 
 			}
 			if (opt == 7) {
-
+				addJet(jets);
 			}
 			if (opt == 8) {
 
@@ -128,27 +128,31 @@ public class JetsApp {
 		return rjet;
 	}
 
-//	public void addJet() {
-//		List<Jets> jets = new ArrayList<>();
-//		
-//		System.out.println("model");
-//		String mod = sc.next();
-//		System.out.println("speed");
-//		double spe = sc.nextDouble();
-//		System.out.println("range");
-//		int ran = sc.nextInt();
-//		System.out.println("price");
-//		long pri = sc.nextLong();
-//		
-////		jets.add(model);
-//	
-//	};
-	
+	public void addJet(List<Jets> jets) {
+		JetImpl newJet;
+//		input.nextLine();
+		while (true) {
+			try {
+				System.out.println("Please enter a model");
+				String mod = sc.next();
+				System.out.println("Please enter a speed");
+				double spe = sc.nextDouble();
+				System.out.println("Please enter a range");
+				int ran = sc.nextInt();
+				System.out.println("Please enter a price");
+				long pri = sc.nextLong();
 
-	
+				newJet = new JetImpl(mod, spe, ran, pri);
+				break;
+			} catch (InputMismatchException e) {
+				sc.nextLine();
+				System.out.println("Please enter valid parameters");
+				continue;
+			}
+		}jets.add(newJet);
+	}
 
 	private void launch() {
 
 	}
-
 }

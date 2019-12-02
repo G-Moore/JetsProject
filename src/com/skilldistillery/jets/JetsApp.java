@@ -11,8 +11,8 @@ import java.util.Scanner;
 
 public class JetsApp {
 
-	Scanner sc = new Scanner(System.in);
-	List<Jets> jets = parseFile("jets.txt");
+	private Scanner sc = new Scanner(System.in);
+	private List<Jets> jets = parseFile("jets.txt");
 
 	public JetsApp() {
 
@@ -24,7 +24,7 @@ public class JetsApp {
 		ja.launch();
 	}
 
-public List<Jets> parseFile(String fileName) {
+	public List<Jets> parseFile(String fileName) {
 		List<Jets> jets = new ArrayList<>();
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(fileName));
@@ -59,7 +59,7 @@ public List<Jets> parseFile(String fileName) {
 //			System.out.println("5 : Load all Cargo Jets ");
 //			System.out.println("6 : Dogfight! ");
 			System.out.println("7 : Add a jet to Fleet ");
-//			System.out.println("8 : Remove a jet from Fleet ");
+			System.out.println("8 : Remove a jet from Fleet ");
 			System.out.println("9 : Quit ");
 
 			int opt = sc.nextInt();
@@ -87,7 +87,7 @@ public List<Jets> parseFile(String fileName) {
 				addJet(jets);
 			}
 			if (opt == 8) {
-
+				removeJet(jets);
 			}
 			if (opt == 9) {
 				System.out.println("Thanks for flying on air catastrophe!");
@@ -130,7 +130,6 @@ public List<Jets> parseFile(String fileName) {
 
 	public void addJet(List<Jets> jets) {
 		JetImpl newJet;
-//		input.nextLine();
 		while (true) {
 			try {
 				System.out.println("Please enter a model");
@@ -149,8 +148,31 @@ public List<Jets> parseFile(String fileName) {
 				System.out.println("Please enter valid parameters");
 				continue;
 			}
-		}jets.add(newJet);
+		}
+		jets.add(newJet);
 	}
+
+	public void removeJet(List<Jets> jets) {
+	
+			try {
+				if (jets.size() <= 0) {
+					System.out.println("Jets removed");
+				}
+				System.out.println("Select a jet number to remove: ");
+				int jetRemove = sc.nextInt() - 1;
+				if (jetRemove > jets.size() - 1 || jetRemove < -1) {
+					System.out.println("Not in range");
+					sc.nextLine();
+				} else if (jetRemove == -1) {
+					System.out.println("Return to menu");
+				}
+				jets.remove(jetRemove);
+			} catch (InputMismatchException e) {
+				sc.nextLine();
+				System.out.println("Please enter a number");
+			}
+		}
+	
 
 	private void launch() {
 

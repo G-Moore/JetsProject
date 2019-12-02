@@ -12,7 +12,7 @@ public class JetsApp {
 
 	Scanner sc = new Scanner(System.in);
 	List<Jets> jets = parseFile("jets.txt");
-
+	
 	public JetsApp() {
 
 	}
@@ -127,22 +127,19 @@ public class JetsApp {
 		return rjet;
 	}
 
-	public Jets addJet(String model, double speed, int range, long price) {
+	public void addJet() {
 		List<Jets> jets = new ArrayList<>();
 		
 		System.out.println("model");
-		model = sc.next();
-//		jets.add(range);
-		
+		String mod = sc.next();
 		System.out.println("speed");
-		speed = sc.nextDouble();
+		double spe = sc.nextDouble();
 		System.out.println("range");
-		range = sc.nextInt();
+		int ran = sc.nextInt();
 		System.out.println("price");
-		price = sc.nextLong();
+		long pri = sc.nextLong();
 		
-		return addJet(model, speed, range, price);
-
+		jets.add(1, (Jets) jets);
 	
 	};
 	

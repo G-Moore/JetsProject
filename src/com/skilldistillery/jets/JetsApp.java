@@ -65,9 +65,7 @@ public class JetsApp {
 			int opt = sc.nextInt();
 
 			if (opt == 1) {
-				for (Jets jet : jets) {
-					System.out.println(jet);
-				}
+				allJets();
 			}
 			if (opt == 2) {
 				airTime();
@@ -81,7 +79,6 @@ public class JetsApp {
 			if (opt == 5) {
 			}
 			if (opt == 6) {
-
 			}
 			if (opt == 7) {
 				addJet(jets);
@@ -94,6 +91,12 @@ public class JetsApp {
 				break;
 			}
 
+		}
+	}
+
+	private void allJets() {
+		for (Jets jet : jets) {
+			System.out.println(jet);	
 		}
 	}
 

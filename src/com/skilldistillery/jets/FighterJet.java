@@ -7,6 +7,5 @@ public class FighterJet extends Jets {
 	}
 
 	public void fight() {
-		System.out.println("Im a Fighter Jet ");
 	}
 }

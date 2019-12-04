@@ -8,7 +8,13 @@ public class CargoPlane extends Jets implements CargoCarrier {
 
 	@Override
 	public void loadCargo() {
-
+System.out.println(this.getModel()+ " is loading Cargo via rear bay door.");
 	}
 
+	@Override
+	public String toString() {
+		return "CargoPlane [getModel()=" + getModel() + ", getSpeed()=" + getSpeed() + ", getRange()=" + getRange()
+				+ ", getPrice()=" + getPrice() + "]";
+
+}
 }

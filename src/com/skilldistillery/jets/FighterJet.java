@@ -7,5 +7,13 @@ public class FighterJet extends Jets {
 	}
 
 	public void fight() {
+		System.out.println(this.getModel()+ " is Fighting to the bitter end by the seat of the pilots pants.");
 	}
+
+	@Override
+	public String toString() {
+		return "FighterJet [getModel()=" + getModel() + ", getSpeed()=" + getSpeed() + ", getRange()=" + getRange()
+				+ ", getPrice()=" + getPrice() + "]";
+	}
+	
 }

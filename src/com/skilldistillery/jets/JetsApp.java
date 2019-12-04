@@ -33,11 +33,17 @@ public class JetsApp {
 			while ((line = br.readLine()) != null) {
 
 				String[] fields = line.split(", ");
-				Jets jet = new Jets(fields[0], Double.parseDouble(fields[1]), Integer.parseInt(fields[2]),
-						Long.parseLong(fields[3])) {
-				};
-
+				if (fields[4].equalsIgnoreCase("Fighter")) {
+				Jets jet = new FighterJet(fields[0], Double.parseDouble(fields[1]), Integer.parseInt(fields[2]),
+						Long.parseLong(fields[3]));
 				jets.add(jet);
+				
+				}if (fields[4].equalsIgnoreCase("Cargo")) {
+					Jets jet = new CargoPlane(fields[0], Double.parseDouble(fields[1]), Integer.parseInt(fields[2]),
+							Long.parseLong(fields[3]));
+					jets.add(jet);
+					
+					}
 			}
 
 			br.close();
@@ -56,8 +62,8 @@ public class JetsApp {
 			System.out.println("2 : Fly all jets ");
 			System.out.println("3 : View fastest jet ");
 			System.out.println("4 : View jet with longest range");
-//			System.out.println("5 : Load all Cargo Jets ");
-//			System.out.println("6 : Dogfight! ");
+			System.out.println("5 : Load all Cargo Jets ");
+			System.out.println("6 : Dogfight! ");
 			System.out.println("7 : Add a jet to Fleet ");
 			System.out.println("8 : Remove a jet from Fleet ");
 			System.out.println("9 : Quit ");
@@ -77,8 +83,10 @@ public class JetsApp {
 				longest();
 			}
 			if (opt == 5) {
+				jetLoad(jets);
 			}
 			if (opt == 6) {
+				jetFight(jets);
 			}
 			if (opt == 7) {
 				addJet(jets);
@@ -93,10 +101,34 @@ public class JetsApp {
 
 		}
 	}
+	
+	public void jetFight(List<Jets> jet) {
+		int counter = 0;
+		for (Jets fighter : jet) {
+			if(fighter instanceof FighterJet) {
+				((FighterJet) fighter).fight();
+				counter++;
+			}
+		}if (counter == 0) {
+			System.out.println("No Fighter Jets on AirField.");
+		}
+	}
+	
+	public void jetLoad(List<Jets> jet) {
+		int counter = 0;
+		for (Jets cargo : jet) {
+			if(cargo instanceof CargoCarrier) {
+				((CargoCarrier) cargo).loadCargo();
+				counter++;
+			}
+		}if (counter == 0) {
+			System.out.println("No cargo planes on AirField.");
+		}
+	}
 
 	private void allJets() {
 		for (Jets jet : jets) {
-			System.out.println(jet);	
+			System.out.println(jet);
 		}
 	}
 
@@ -156,26 +188,25 @@ public class JetsApp {
 	}
 
 	public void removeJet(List<Jets> jets) {
-	
-			try {
-				if (jets.size() <= 0) {
-					System.out.println("Jets removed");
-				}
-				System.out.println("Select a jet number to remove: ");
-				int jetRemove = sc.nextInt() - 1;
-				if (jetRemove > jets.size() - 1 || jetRemove < -1) {
-					System.out.println("Not in range");
-					sc.nextLine();
-				} else if (jetRemove == -1) {
-					System.out.println("Return to menu");
-				}
-				jets.remove(jetRemove);
-			} catch (InputMismatchException e) {
-				sc.nextLine();
-				System.out.println("Please enter a number");
+
+		try {
+			if (jets.size() <= 0) {
+				System.out.println("Jets removed");
 			}
+			System.out.println("Select a jet number to remove: ");
+			int jetRemove = sc.nextInt() - 1;
+			if (jetRemove > jets.size() - 1 || jetRemove < -1) {
+				System.out.println("Not in range");
+				sc.nextLine();
+			} else if (jetRemove == -1) {
+				System.out.println("Return to menu");
+			}
+			jets.remove(jetRemove);
+		} catch (InputMismatchException e) {
+			sc.nextLine();
+			System.out.println("Please enter a number");
 		}
-	
+	}
 
 	private void launch() {
 

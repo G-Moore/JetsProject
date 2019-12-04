@@ -1,6 +1,6 @@
 model  speed  range price
-Omega, 3, 10000, 400
-Aerial, 2, 3000, 60
-Speeder, 7, 8000, 900
-Carrier, 1, 12000, 350
-Bubba, 1, 15000, 600
+Omega, 3, 10000, 400, Fighter
+Aerial, 2, 3000, 60, Fighter
+Speeder, 7, 8000, 900, Fighter
+Carryn, 1, 12000, 350, Cargo
+Bubba, 1, 15000, 600, Cargo
